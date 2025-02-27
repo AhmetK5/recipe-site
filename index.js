@@ -9,21 +9,12 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+const indexRoutes = require("./routes/index");
+const recipeRoutes = require("./routes/recipes");
 
-// Connect to MySQL
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-});
-
-db.connect((err) => {
-    if (err) throw err;
-    console.log("MySQL Connected...");
-});
-
-app.use("/", require("./routes/index"));
-app.use("/recipes", require("./routes/recipes"));
+app.use("/", indexRoutes);  
+app.use("/recipes", recipeRoutes);
+const db = require("./database");  
 
 app.listen(3000, () => console.log("Server running on port 3000"));
+

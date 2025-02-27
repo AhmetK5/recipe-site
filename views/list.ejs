@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipe List</title>
+</head>
+<body>
+    <h1>Recipe List</h1>
+    <% recipes.forEach(recipe => { %>
+        <h2><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
+    <% }) %>
+    <a href="/recipes/add">Add a New Recipe</a>
+</body>
+</html>
