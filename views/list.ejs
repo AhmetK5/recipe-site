@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
     <title>Recipe List</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <h1>Recipe List</h1>
     <% recipes.forEach(recipe => { %>
-        <h2><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
+        <div class="recipe-card">
+            <h2><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
+        </div>
     <% }) %>
-    <a href="/recipes/add">Add a New Recipe</a>
+    <br>
+    <a href="/recipes/add">➕ Add a New Recipe</a>
 </body>
 </html>
+
